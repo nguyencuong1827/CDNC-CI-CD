@@ -1,0 +1,107 @@
+# Java Maven CircleCI 2.0 configuration file
+#
+# Check https://circleci.com/docs/2.0/language-java/ for more details
+#
+version: 2
+jobs:
+  checkout_code: # job1
+    docker:
+      - image: circleci/openjdk:8-jdk
+    working_directory: ~/circleci-demo-workflows
+    steps:
+      - checkout
+      # Lưu thư file, thư mục để sử dụng ở job khác trong workflows
+      - persist_to_workspace:
+          root: /home/circleci
+          paths: circleci-demo-workflows/*
+
+  get_dependencies: # job2
+    docker:
+      - image: circleci/openjdk:8-jdk
+    working_directory: ~/circleci-demo-workflows
+    steps:
+      # Lấy lại file đã lưu ở job1
+      - attach_workspace:
+          at: ~/
+      - restore_cache:
+          keys:
+          - cricle-test-{{ checksum "pom.xml" }}
+          # fallback to using the latest cache if no exact match is found
+          - cricle-test-
+      - run: mvn dependency:go-offline
+      - save_cache:
+          paths:
+            - ~/.m2
+          key: cricle-test-{{ checksum "pom.xml" }}
+
+  build: # job3
+    docker:
+      - image: circleci/openjdk:8-jdk
+    working_directory: ~/circleci-demo-workflows
+    environment:
+      MAVEN_OPTS: -Xmx3200m
+    steps:
+      # Lấy lại file đã lưu ở job1
+      - attach_workspace:
+          at: ~/
+      - run: mvn compile
+
+  test: #job4
+    docker:
+      - image: circleci/openjdk:8-jdk
+    environment:
+      MAVEN_OPTS: -Xmx3200m
+    working_directory: ~/circleci-demo-workflows
+    steps:
+      # Lấy lại file đã lưu ở job1
+      - attach_workspace:
+          at: ~/
+      # run tests!
+      - run: |
+          mvn integration-test
+          mkdir target/junit
+      - store_test_results:
+          path: target/junit
+
+  deploy:
+    docker:
+      - image: circleci/openjdk:8-jdk
+    working_directory: ~/circleci-demo-workflows
+    steps:
+      - attach_workspace:
+          at: ~/
+      - run:
+          name: Run setup script
+          command: bash .circleci/setup-heroku.sh
+      - add_ssh_keys:
+          fingerprints:
+            - "a1:5d:48:05:92:d2:b4:82:87:41:46:b0:8c:29:3b:46"
+      - run:
+          name: Deploy Master to Heroku
+          command: |
+            git push --force git@heroku.com:fathomless-inlet-82408.git HEAD:refs/heads/master
+            heroku run python manage.py deploy
+            heroku restart
+
+workflows:
+  version: 2
+  build_and_test:
+    jobs:
+      - checkout_code
+      - get_dependencies: # get_dependencies chạy sau checkout_code
+          requires:
+            - checkout_code
+      - build: # xong get_dependencies mới build
+          requires:
+            - get_dependencies
+      - test: # xong get_dependencies mới test
+          requires:
+            - get_dependencies
+      - deploy:
+          type: approval
+          requires:
+            - build
+            - test
+          filters:
+            branches:
+              only: master

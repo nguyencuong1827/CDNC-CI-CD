@@ -1,0 +1,23 @@
+.avatar-uploader > .ant-upload {
+  width: 200px;
+  height: 200px;
+  display: flex;
+  margin: 0 75px 30px;
+}
+h1 {
+  text-align: center;
+}
+.register-form {
+  margin: auto;
+  max-width: 500px;
+}
+.register-form-button {
+  width: 100%;
+}
+img {
+  margin: auto;
+  display: flex;
+}
+.Link {
+  font-size: larger;
+}

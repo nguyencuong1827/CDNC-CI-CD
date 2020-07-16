@@ -8,6 +8,3 @@ workflows:
       - react/eslint:
           requires:
             - react/install
-      - react/test:
-          requires:
-            - react/install

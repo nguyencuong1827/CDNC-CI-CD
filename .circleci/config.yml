@@ -1,18 +1,29 @@
-version: 2
-jobs:
+# version: 2
+# jobs:
+#   build:
+#     docker:
+#       - image: katalonstudio/katalon
+
+#     # working_directory: ~/CDNC-CI-CDqu
+
+#     steps:
+#       - checkout
+#       - run:
+#           name: Excute Katalon Studio
+#           # command: katalon-excute.sh -browserType="Chromes" -retry=0 -statusDelay=15 -testSuitePath='Test Suites/TS_RegressionTest'
+#           command: katalonc -noSplash -runMode=console -projectPath="CDNC.prj" -retry=0 -testSuitePath="Test Suites/BasicTestSuite" -executionProfile="default" -browserType="Chrome" -apiKey="a47e84a5-7a03-4d94-8de2-382472ef5065" --config -proxy.auth.option=NO_PROXY -proxy.system.option=NO_PROXY -proxy.system.applyToDesiredCapabilities=true
+#       - store-test_results:
+#           path: ./Reports
+#       - store-artifacts:
+#           path: ./Reports
+version: 2.1
+orbs:
+  katalon-studio: katalon/katalon-studio@23.0.2
+workflows:
   build:
-    docker:
-      - image: katalonstudio/katalon
-
-    # working_directory: ~/CDNC-CI-CDqu
-
-    steps:
-      - checkout
-      - run:
-          name: Excute Katalon Studio
-          # command: katalon-excute.sh -browserType="Chromes" -retry=0 -statusDelay=15 -testSuitePath='Test Suites/TS_RegressionTest'
-          command: katalonc -noSplash -runMode=console -projectPath="CDNC.prj" -retry=0 -testSuitePath="Test Suites/BasicTestSuite" -executionProfile="default" -browserType="Chrome" -apiKey="a47e84a5-7a03-4d94-8de2-382472ef5065" --config -proxy.auth.option=NO_PROXY -proxy.system.option=NO_PROXY -proxy.system.applyToDesiredCapabilities=true
-      - store-test_results:
-          path: ./Reports
-      - store-artifacts:
-          path: ./Reports
+    jobs:
+      - katalon-studio/run:
+          version: latest
+          command_arguments: >-
+            -browserType='Chrome' -retry=0 -statusDelay=15 -testSuitePath='Test
+            Suites/TS_RegressionTest'

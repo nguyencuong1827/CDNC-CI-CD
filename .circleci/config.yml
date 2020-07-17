@@ -25,7 +25,7 @@ jobs:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
 
-      - run: npm run test --passWithNoTests
+      - run: npm run test
 
   deploy:
     machine:

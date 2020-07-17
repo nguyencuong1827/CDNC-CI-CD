@@ -1,55 +1,14 @@
-version: 2.1
-orbs:
-  katalon-studio: katalon/katalon-studio@23.0.11
+version: 2
 jobs:
   build:
     docker:
-      - image: circleci/node:lts
-
-    working_directory: ~/CDNC-CI-CD
-
-    steps:
-      - checkout
-
-      # Download and cache dependencies
-      - restore_cache:
-          keys:
-            - v1-dependencies-{{ checksum "package.json" }}
-            # fallback to using the latest cache if no exact match is found
-            - v1-dependencies-
-
-      - run: npm install
-
-      - save_cache:
-          paths:
-            - node_modules
-          key: v1-dependencies-{{ checksum "package.json" }}
-
-      - run: npm run test
-
-      - katalon-studio/run:
-        version: latest
-        command_arguments: >-
-          -browserType='Chrome' -retry=0 -statusDelay=15 -testSuitePath='Test
-          Suites/TS_RegressionTest'
-
-  deploy:
-    machine:
-      enabled: true
+      - image: katalonstudio/katalon
     steps:
       - checkout
       - run:
-          name: Deploy Master to Heroku
-          command: |
-            git push https://heroku:$HEROKU_API_KEY@git.heroku.com/$HEROKU_APP_NAME.git master
-workflows:
-  version: 2.1
-  build-deploy:
-    jobs:
-      - build
-      - deploy:
-          requires:
-            - build
-          filters:
-            branches:
-              only: master
+          name: Excute Katalon Studio
+          command: katalon-excute.sh -browserType="Chrome" -retry=0 -statusDelay=15 -testSuitePath='Test Suites/TS_RegressionTest'
+      -store-test_results:
+        path: ./report
+      -store-artisfacts:
+        path: ./report

@@ -3,12 +3,15 @@ jobs:
   build:
     docker:
       - image: katalonstudio/katalon
+
+    working_directory: ~/CDNC-CI-CD
+
     steps:
       - checkout
       - run:
           name: Excute Katalon Studio
-          command: katalon-excute.sh -browserType="Chrome" -retry=0 -statusDelay=15 -testSuitePath='Test Suites/TS_RegressionTest'
-      -store-test_results:
+          command: katalon-excute.sh -browserType="Chromes" -retry=0 -statusDelay=15 -testSuitePath='Test Suites/TS_RegressionTest'
+      - store-test_results:
         path: ./report
-      -store-artisfacts:
+      - store-artisfacts:
         path: ./report

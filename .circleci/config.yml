@@ -2,46 +2,17 @@ version: 2
 jobs:
   build:
     docker:
-      - image: circleci/node:lts
+      - image: katalonstudio/katalon
 
-    working_directory: ~/extalkteam-backend
+    working_directory: ~/CDNC-CI-CD
 
-    steps:
-      - checkout
-
-      # Download and cache dependencies
-      - restore_cache:
-          keys:
-            - v1-dependencies-{{ checksum "package.json" }}
-            # fallback to using the latest cache if no exact match is found
-            - v1-dependencies-
-
-      - run: npm install
-
-      - save_cache:
-          paths:
-            - node_modules
-          key: v1-dependencies-{{ checksum "package.json" }}
-
-      - run: npm run test
-
-  deploy:
-    machine:
-      enabled: true
     steps:
       - checkout
       - run:
-          name: Deploy Master to Heroku
-          command: |
-            git push https://heroku:$HEROKU_API_KEY@git.heroku.com/$HEROKU_APP_NAME.git master
-workflows:
-  version: 2
-  build-deploy:
-    jobs:
-      - build
-      - deploy:
-          requires:
-            - build
-          filters:
-            branches:
-              only: master
+          name: Excute Katalon Studio
+          command: katalon-excute.sh -browserType="Chromes" -retry=0 -statusDelay=15 -testSuitePath='Test Suites/BasicTestSuite'
+          # command: katalonc -noSplash -runMode=console -projectPath="TestCI.prj" -retry=0 -testSuitePath="Test Suites/BasicTestSuite" -executionProfile="default" -browserType="Chrome" -apiKey="a47e84a5-7a03-4d94-8de2-382472ef5065" --config -proxy.auth.option=NO_PROXY -proxy.system.option=NO_PROXY -proxy.system.applyToDesiredCapabilities=true
+      - store-test_results:
+          path: ./report
+      - store-artifacts:
+          path: ./report

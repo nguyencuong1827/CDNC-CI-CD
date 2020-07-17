@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Project>
    <description></description>
-   <name>TestCI</name>
+   <name>CDNC</name>
    <tag></tag>
-   <UUID>95c18306-4a44-4f90-a3c5-42ea0fbb6a78</UUID>
+   <UUID>a266a6ef-32a2-4054-b4b7-c9bdd67a9983</UUID>
    <migratedVersion>5.9.0</migratedVersion>
    <pageLoadTimeout>0</pageLoadTimeout>
    <sourceContent>

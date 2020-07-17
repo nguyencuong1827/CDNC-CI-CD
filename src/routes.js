@@ -5,7 +5,7 @@ import NormalLayout from './layouts/normal';
 import Home from './views/home';
 import SignIn from './views/signin';
 import SignUp from './views/singup';
-import Profile from './views/profile';
+// import Profile from './views/profile';
 import ShowProfile from './views/showprofile';
 import TutorListing from './views/tutorlisting';
 import Contract from './views/contract';

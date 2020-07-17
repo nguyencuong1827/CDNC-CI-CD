@@ -12,6 +12,7 @@
 #           name: Excute Katalon Studio
 #           # command: katalon-excute.sh -browserType="Chromes" -retry=0 -statusDelay=15 -testSuitePath='Test Suites/TS_RegressionTest'
 #           command: katalonc -noSplash -runMode=console -projectPath="CDNC.prj" -retry=0 -testSuitePath="Test Suites/BasicTestSuite" -executionProfile="default" -browserType="Chrome" -apiKey="a47e84a5-7a03-4d94-8de2-382472ef5065" --config -proxy.auth.option=NO_PROXY -proxy.system.option=NO_PROXY -proxy.system.applyToDesiredCapabilities=true
+#           -browserType='Chrome' -retry=0 -statusDelay=15 -testSuitePath='Test Suites/BasicTestSuite'
 #       - store-test_results:
 #           path: ./Reports
 #       - store-artifacts:
@@ -25,4 +26,4 @@ workflows:
       - katalon-studio/run:
           version: latest
           command_arguments: >-
-            -browserType='Chrome' -retry=0 -statusDelay=15 -testSuitePath='Test Suites/BasicTestSuite'
+            katalonc -noSplash -runMode=console -projectPath="CDNC.prj" -retry=0 -testSuitePath="Test Suites/BasicTestSuite" -browserType="Chrome" -apiKey="a47e84a5-7a03-4d94-8de2-382472ef5065"

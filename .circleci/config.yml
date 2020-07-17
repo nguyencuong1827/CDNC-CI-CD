@@ -13,5 +13,5 @@ jobs:
           command: katalon-excute.sh -browserType="Chromes" -retry=0 -statusDelay=15 -testSuitePath='Test Suites/TS_RegressionTest'
       - store-test_results:
           path: ./report
-      - store-artisfacts:
+      - store-artifacts:
           path: ./report

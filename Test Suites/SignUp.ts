@@ -17,4 +17,10 @@
       <isRun>true</isRun>
       <testCaseId>Test Cases/SignUp</testCaseId>
    </testCaseLink>
+   <testCaseLink>
+      <guid>de356764-42e6-4d7a-88c6-82b43229fbc4</guid>
+      <isReuseDriver>false</isReuseDriver>
+      <isRun>true</isRun>
+      <testCaseId>Test Cases/ForgotPassword</testCaseId>
+   </testCaseLink>
 </TestSuiteEntity>

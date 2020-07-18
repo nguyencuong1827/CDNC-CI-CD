@@ -20,19 +20,13 @@ WebUI.openBrowser('')
 
 WebUI.navigateToUrl('https://tutor-reactjs.firebaseapp.com/home')
 
-WebUI.click(findTestObject('Object Repository/Page_Uber for tutor/a_See more'))
+WebUI.click(findTestObject('Object Repository/Page_Uber for tutor/a_Sign in'))
 
-WebUI.click(findTestObject('Object Repository/Page_Uber for tutor/input__mui-autocomplete-94107'))
+WebUI.switchToWindowTitle('Uber for tutor')
 
-WebUI.click(findTestObject('Object Repository/Page_Uber for tutor/li_Thnh ph Cn Th'))
+WebUI.setText(findTestObject('Object Repository/Page_Uber for tutor/input_Email Address_email'), 'abc@gmail.com')
 
-WebUI.click(findTestObject('Object Repository/Page_Uber for tutor/input__mui-autocomplete-38487'))
+WebUI.setEncryptedText(findTestObject('Object Repository/Page_Uber for tutor/input_Password_password'), 'RigbBhfdqODKcAsiUrg+1Q==')
 
-WebUI.click(findTestObject('Object Repository/Page_Uber for tutor/li_Huyn Vnh Thnh'))
-
-WebUI.click(findTestObject('Object Repository/Page_Uber for tutor/input__mui-autocomplete-32818'))
-
-WebUI.click(findTestObject('Object Repository/Page_Uber for tutor/li_literature'))
-
-WebUI.click(findTestObject('Object Repository/Page_Uber for tutor/span_OK'))
+WebUI.click(findTestObject('Object Repository/Page_Uber for tutor/span_Sign In'))
 

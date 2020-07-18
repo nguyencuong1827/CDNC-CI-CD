@@ -1,11 +1,16 @@
-version: 2.1
 orbs:
-  katalon-studio: katalon/katalon-studio@23.0.11
+  react: thefrontside/react@0.2.0
+version: 2.1
 workflows:
-  build:
+  push:
     jobs:
-      - katalon-studio/run:
-          version: latest
-          command_arguments: >-
-            -browserType='Chrome' -retry=0 -statusDelay=15 -testSuitePath='Test
-            Suites/TS_RegressionTest'
+      - react/install
+      - react/eslint:
+          requires:
+            - react/install
+      - react/test:
+          requires:
+            - react/install
+      - react/coverage:
+          requires:
+            - react/install

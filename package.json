@@ -15,9 +15,10 @@
     "core-js": "^3.4.5",
     "date-fns": "^2.0.0-beta.5",
     "dateformat": "^3.0.3",
-    "firebase": "^7.5.1",
+    "eslint": "^6.6.0",
+    "firebase": "^7.16.1",
     "history": "^4.10.1",
-    "lodash": "^4.17.15",
+    "lodash": "^4.17.19",
     "material-ui-flat-pagination": "^4.0.0",
     "material-ui-image": "^3.2.2",
     "moment": "^2.24.0",
@@ -37,7 +38,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test": "react-scripts test --passWithNoTests",
     "eject": "react-scripts eject",
     "lint": "eslint .",
     "lint:fix": "eslint --fix .",
@@ -59,7 +60,6 @@
     ]
   },
   "devDependencies": {
-    "eslint": "^6.6.0",
     "eslint-config-airbnb": "^18.0.1",
     "eslint-plugin-react": "^7.16.0",
     "prettier": "^1.19.1"

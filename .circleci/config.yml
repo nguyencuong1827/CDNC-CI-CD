@@ -14,9 +14,10 @@ workflows:
   push:
     jobs:
       - react/install
-      - npm/start
-
+      - react/build:
+          requires:
+            - react/install
       - test:
           requires:
-            - react/start
+            - react/build
 

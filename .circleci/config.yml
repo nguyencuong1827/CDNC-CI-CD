@@ -29,7 +29,7 @@
 #             katalonc -noSplash -runMode=console -projectPath="CDNC.prj" -retry=0 -testSuitePath="Test Suites/BasicTestSuite" -browserType="Chrome" -apiKey="a47e84a5-7a03-4d94-8de2-382472ef5065"
 version: 2
 jobs:
-  katalon-studio/run:
+  build:
     docker:
       - image: katalonstudio/katalon:6.3.3
     steps:

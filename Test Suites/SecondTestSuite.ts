@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <TestSuiteEntity>
    <description></description>
-   <name>BasicTestSuite</name>
+   <name>SecondTestSuite</name>
    <tag></tag>
    <isRerun>false</isRerun>
    <mailRecipient></mailRecipient>
@@ -10,17 +10,17 @@
    <pageLoadTimeoutDefault>true</pageLoadTimeoutDefault>
    <rerunFailedTestCasesOnly>false</rerunFailedTestCasesOnly>
    <rerunImmediately>false</rerunImmediately>
-   <testSuiteGuid>ac84e06d-10b3-49ce-8243-ec5f0df8e63d</testSuiteGuid>
+   <testSuiteGuid>ea14f146-49bc-4242-ac56-6a8cf99de739</testSuiteGuid>
    <testCaseLink>
-      <guid>beaebe40-8974-4f2b-8390-1add402db54d</guid>
-      <isReuseDriver>false</isReuseDriver>
-      <isRun>true</isRun>
-      <testCaseId>Test Cases/LogInFailed</testCaseId>
-   </testCaseLink>
-   <testCaseLink>
-      <guid>bbe69e69-b36b-4998-9aaa-277c1381c75a</guid>
+      <guid>5a6badf7-463b-4e18-867d-5610291c8869</guid>
       <isReuseDriver>false</isReuseDriver>
       <isRun>true</isRun>
       <testCaseId>Test Cases/FilterSuccess</testCaseId>
+   </testCaseLink>
+   <testCaseLink>
+      <guid>62afea42-6588-4497-bb57-15384f01696c</guid>
+      <isReuseDriver>false</isReuseDriver>
+      <isRun>true</isRun>
+      <testCaseId>Test Cases/LogInFailed</testCaseId>
    </testCaseLink>
 </TestSuiteEntity>

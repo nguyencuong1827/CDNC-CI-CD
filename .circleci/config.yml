@@ -31,7 +31,7 @@ version: 2
 jobs:
   build:
     docker:
-      - image: katalonstudio/katalon
+      - image: katalonstudio/katalon:6.3.3
     steps:
       - checkout
       - run:

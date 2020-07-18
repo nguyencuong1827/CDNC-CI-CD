@@ -14,7 +14,7 @@ workflows:
   push:
     jobs:
       - react/install
-      - npm start
+      - npm/start
 
       - test:
           requires:

@@ -2,7 +2,7 @@ orbs:
   react: thefrontside/react@0.2.0
 version: 2
 jobs:
-  test:
+  build:
     docker:
       - image: katalonstudio/katalon:6.3.3
     steps:
@@ -14,7 +14,8 @@ workflows:
   push:
     jobs:
       - react/install
-      - test:
+
+      - build:
           requires:
             - react/install
 

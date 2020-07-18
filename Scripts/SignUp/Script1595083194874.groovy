@@ -18,7 +18,7 @@ import org.openqa.selenium.Keys as Keys
 
 WebUI.openBrowser('')
 
-WebUI.navigateToUrl('https://tutor-reactjs.firebaseapp.com/home')
+WebUI.navigateToUrl('http://localhost:3000/home')
 
 WebUI.click(findTestObject('Page_Uber for tutor/a_Sign up'))
 

@@ -39,7 +39,7 @@
 #           command: katalon-execute.sh -browserType="Chrome" -retry=0 -statusDelay=15 -testSuitePath="Test Suites/BasicTestSuite"
 version: 2.1
 orbs:
-  katalon-studio: katalon/katalon-studio@23.0.2
+  katalon-studio: katalon/katalon-studio@6.3.3
 workflows:
   build:
     jobs:

@@ -1,22 +1,53 @@
-orbs:
-  react: thefrontside/react@0.2.0
+# orbs:
+#   react: thefrontside/react@0.2.0
+# version: 2
+# jobs:
+#   build:
+#     docker:
+#       - image: katalonstudio/katalon:6.3.3
+#     steps:
+#       - checkout
+#       - run:
+#           name: Execute Katalon Studio
+#           command: katalon-execute.sh -browserType="Chrome" -retry=0 -statusDelay=15 -testSuitePath="test/Test Suites/SignUp"
+# workflows:
+#   push:
+#     jobs:
+#       - react/install
+#       - react/eslint:
+#           requires:
+#             - react/install
+#       - react/test:
+#           requires:
+#             - react/install
+
 version: 2
-  test:
+jobs:
+  build:
     docker:
       - image: katalonstudio/katalon:6.3.3
+      - image: circleci/node:lts
     steps:
       - checkout
+      # Download and cache dependencies
+      - restore_cache:
+          keys:
+            - v1-dependencies-{{ checksum "package.json" }}
+            # fallback to using the latest cache if no exact match is found
+            - v1-dependencies-
+      - run: npm install
+
+      - save_cache:
+          paths:
+            - node_modules
+          key: v1-dependencies-{{ checksum "package.json" }}
+
+      - run: npm run start
+
       - run:
           name: Execute Katalon Studio
-          command: katalon-execute.sh -browserType="Chrome" -retry=0 -statusDelay=15 -testSuitePath="test/Test Suites/SignUp"
-workflows:
-  push:
-    jobs:
-      - react/install
-      - react/eslint:
-          requires:
-            - react/install
-      - test:
-          requires:
-            - react/install
-
+          command: cd "KatalonProject" && katalon-execute.sh -browserType="Chrome" -retry=0 -statusDelay=15 -testSuitePath="test/Test Suites/SignUp"
+      - store-test_results:
+          path: ./Reports
+      - store-artifacts:
+          path: ./Reports

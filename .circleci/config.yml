@@ -27,24 +27,13 @@
 #           version: latest
 #           command_arguments: >-
 #             katalonc -noSplash -runMode=console -projectPath="CDNC.prj" -retry=0 -testSuitePath="Test Suites/BasicTestSuite" -browserType="Chrome" -apiKey="a47e84a5-7a03-4d94-8de2-382472ef5065"
-# version: 2
-# jobs:
-#   build:
-#     docker:
-#       - image: katalonstudio/katalon:6.3.3
-#     steps:
-#       - checkout
-#       - run:
-#           name: Execute Katalon Studio
-#           command: katalon-execute.sh -browserType="Chrome" -retry=0 -statusDelay=15 -testSuitePath="Test Suites/BasicTestSuite"
-version: 2.1
-orbs:
-  katalon-studio: katalon/katalon-studio@6.3.3
-workflows:
-  build:
-    jobs:
-      - katalon-studio/run:
-          version: latest
-          command_arguments: >-
-            -browserType='Chrome' -retry=0 -statusDelay=15 -testSuitePath='Test
-            Suites/TS_RegressionTest'
+version: 2
+jobs:
+  katalon-studio/run:
+    docker:
+      - image: katalonstudio/katalon:6.3.3
+    steps:
+      - checkout
+      - run:
+          name: Execute Katalon Studio
+          command: katalon-execute.sh -browserType="Chrome" -retry=0 -statusDelay=15 -testSuitePath="Test Suites/asicTestSuite"

@@ -36,7 +36,7 @@ jobs:
       - checkout
       - run:
           name: Execute Katalon Studio
-          command: katalon-execute.sh -browserType="Chrome" -retry=0 -statusDelay=15 -testSuitePath="Test Suites/All_Test"
+          command: katalon-execute.sh -browserType="Chrome" -retry=0 -statusDelay=15 -testSuitePath="Test Suites/BasicTestSuite"
       - store-test_results:
           path: ./Reports
       - store-artifacts:

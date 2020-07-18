@@ -6,12 +6,12 @@
    <elementGuidId>1d301ec5-0338-4890-ab11-fbbed577f852</elementGuidId>
    <selectorCollection>
       <entry>
-         <key>XPATH</key>
-         <value>	</value>
-      </entry>
-      <entry>
          <key>CSS</key>
          <value>#lastName</value>
+      </entry>
+      <entry>
+         <key>XPATH</key>
+         <value>//input[@id='lastName']</value>
       </entry>
    </selectorCollection>
    <selectorMethod>XPATH</selectorMethod>
@@ -70,7 +70,7 @@
       <matchCondition>equals</matchCondition>
       <name>value</name>
       <type>Main</type>
-      <value>n</value>
+      <value>x</value>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>

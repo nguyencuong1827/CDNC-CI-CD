@@ -36,4 +36,4 @@ jobs:
       - checkout
       - run:
           name: Execute Katalon Studio
-          command: katalon-execute.sh -browserType="Chrome" -retry=0 -statusDelay=15 -testSuitePath="Test Suites/SecondTestSuite"
+          command: katalon-execute.sh -browserType="Chrome" -retry=0 -statusDelay=15 -testSuitePath="Test Suites/SignUp"

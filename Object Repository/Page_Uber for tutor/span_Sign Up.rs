@@ -6,12 +6,12 @@
    <elementGuidId>33678d99-af59-486a-91d0-0fe85218ff9d</elementGuidId>
    <selectorCollection>
       <entry>
-         <key>XPATH</key>
-         <value>//div[@id='root']/div/div[2]/div/div/form/button/span</value>
+         <key>CSS</key>
+         <value>button.MuiButtonBase-root.MuiButton-root.MuiButton-contained.jss285.MuiButton-containedPrimary.MuiButton-fullWidth > span.MuiButton-label</value>
       </entry>
       <entry>
-         <key>CSS</key>
-         <value>button.MuiButtonBase-root.MuiButton-root.MuiButton-contained.jss333.MuiButton-containedPrimary.MuiButton-fullWidth > span.MuiButton-label</value>
+         <key>XPATH</key>
+         <value>//div[@id='root']/div/div[2]/div/div/form/button/span</value>
       </entry>
    </selectorCollection>
    <selectorMethod>XPATH</selectorMethod>
@@ -42,7 +42,7 @@
       <matchCondition>equals</matchCondition>
       <name>xpath</name>
       <type>Main</type>
-      <value>id(&quot;root&quot;)/div[1]/div[@class=&quot;MuiContainer-root MuiContainer-maxWidthLg&quot;]/div[@class=&quot;MuiContainer-root jss334 MuiContainer-maxWidthSm&quot;]/div[@class=&quot;jss330&quot;]/form[@class=&quot;jss332&quot;]/button[@class=&quot;MuiButtonBase-root MuiButton-root MuiButton-contained jss333 MuiButton-containedPrimary MuiButton-fullWidth&quot;]/span[@class=&quot;MuiButton-label&quot;]</value>
+      <value>id(&quot;root&quot;)/div[1]/div[@class=&quot;MuiContainer-root MuiContainer-maxWidthLg&quot;]/div[@class=&quot;MuiContainer-root jss286 MuiContainer-maxWidthSm&quot;]/div[@class=&quot;jss282&quot;]/form[@class=&quot;jss284&quot;]/button[@class=&quot;MuiButtonBase-root MuiButton-root MuiButton-contained jss285 MuiButton-containedPrimary MuiButton-fullWidth&quot;]/span[@class=&quot;MuiButton-label&quot;]</value>
    </webElementProperties>
    <webElementXpaths>
       <isSelected>true</isSelected>

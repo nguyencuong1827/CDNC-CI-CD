@@ -37,13 +37,14 @@
 #       - run:
 #           name: Execute Katalon Studio
 #           command: katalon-execute.sh -browserType="Chrome" -retry=0 -statusDelay=15 -testSuitePath="Test Suites/BasicTestSuite"
-version: 2
+version: 2.1
 orbs:
-  katalon-studio: katalon/katalon-studio@6.3.3
+  katalon-studio: katalon/katalon-studio@23.0.2
 workflows:
   build:
     jobs:
       - katalon-studio/run:
-          version: 6.3.3
+          version: latest
           command_arguments: >-
-            -browserType='Chrome' -retry=0 -statusDelay=15 -testSuitePath='Test Suites/BasicTestSuite'
+            -browserType='Chrome' -retry=0 -statusDelay=15 -testSuitePath='Test
+            Suites/TS_RegressionTest'

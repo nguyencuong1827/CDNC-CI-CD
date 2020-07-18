@@ -1,6 +1,14 @@
 orbs:
   react: thefrontside/react@0.2.0
-version: 2.1
+version: 2
+  test:
+    docker:
+      - image: katalonstudio/katalon:6.3.3
+    steps:
+      - checkout
+      - run:
+          name: Execute Katalon Studio
+          command: katalon-execute.sh -browserType="Chrome" -retry=0 -statusDelay=15 -testSuitePath="test/Test Suites/SignUp"
 workflows:
   push:
     jobs:
@@ -8,9 +16,7 @@ workflows:
       - react/eslint:
           requires:
             - react/install
-      - react/test:
+      - test:
           requires:
             - react/install
-      - react/coverage:
-          requires:
-            - react/install
+

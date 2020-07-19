@@ -18,9 +18,7 @@ jobs:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
 
-      - run: 
-          enforce_queuing: true
-          command: npm run start
+      - run: npm run start
   test:
     docker:
       - image: katalonstudio/katalon:6.3.3
@@ -33,4 +31,6 @@ workflows:
   build_and_test:
     jobs:
       - build
-      - test
+      - test:
+          requires:
+            - build

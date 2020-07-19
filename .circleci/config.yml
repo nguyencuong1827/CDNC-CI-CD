@@ -1,38 +1,91 @@
-version: 2.1
+# version: 2.1
+# jobs:
+#   build:
+#     docker:
+#       - image: circleci/node:lts
+#     steps:
+#       - checkout
+#       # Download and cache dependencies
+#       - restore_cache:
+#           keys:
+#             - v1-dependencies-{{ checksum "package.json" }}
+#             # fallback to using the latest cache if no exact match is found
+#             - v1-dependencies-
+#       - run: npm install
+
+#       - save_cache:
+#           paths:
+#             - node_modules
+#           key: v1-dependencies-{{ checksum "package.json" }}
+
+#       - run: npm run build
+#       - run: firebase deploy 
+#   test:
+#     docker:
+#       - image: katalonstudio/katalon:6.3.3
+#     steps:
+#       - checkout
+#       - run:
+#           name: Execute Katalon Studio
+#           command: cd "test" && katalon-execute.sh -browserType="Chrome" -retry=0 -statusDelay=15 -testSuitePath="test/Test Suites/SignUp"
+# workflows:
+#   build_and_test:
+#     jobs:
+#       - build
+#       - test:
+#           requires:
+#             - build
+#           context: org-global  
+
+version: 2
 jobs:
-  build:
+  react/install:
     docker:
-      - image: circleci/node:lts
+    - image: circleci/node:10
     steps:
-      - checkout
-      # Download and cache dependencies
-      - restore_cache:
-          keys:
-            - v1-dependencies-{{ checksum "package.json" }}
-            # fallback to using the latest cache if no exact match is found
-            - v1-dependencies-
-      - run: npm install
-
-      - save_cache:
-          paths:
-            - node_modules
-          key: v1-dependencies-{{ checksum "package.json" }}
-
-      - run: npm run build
-      - run: firebase deploy 
+    - checkout
+    - restore_cache:
+        key: v1-node-modules-{{ checksum "yarn.lock" }}
+    - run:
+        command: yarn install
+    - persist_to_workspace:
+        paths:
+        - project
+        root: ~/
+    - save_cache:
+        key: v1-node-modules-{{ checksum "yarn.lock" }}
+        paths:
+        - ~/project/node_modules
+  react/build:
+    docker:
+    - image: circleci/node:10
+    steps:
+    - attach_workspace:
+        at: ~/
+    - run:
+        command: mkdir -p artifacts
+        name: Ensure artifacts directory is present
+    - run:
+        command: NODE_ENV=production yarn build
+    - run:
+        command: cp -r build artifacts
+    - store_artifacts:
+        path: ./artifacts
   test:
     docker:
-      - image: katalonstudio/katalon:6.3.3
+    - image: katalonstudio/katalon:6.3.3
     steps:
-      - checkout
-      - run:
-          name: Execute Katalon Studio
-          command: cd "test" && katalon-execute.sh -browserType="Chrome" -retry=0 -statusDelay=15 -testSuitePath="test/Test Suites/SignUp"
+    - checkout
+    - run:
+        name: Execute Katalon Studio
+        command: katalon-execute.sh -browserType="Chrome" -retry=0 -statusDelay=15 -testSuitePath="test/Test Suites/SignUp"
 workflows:
-  build_and_test:
+  push:
     jobs:
-      - build
-      - test:
-          requires:
-            - build
-          context: org-global  
+    - react/install
+    - react/build:
+        requires:
+        - react/install
+    - test:
+        requires:
+        - react/build

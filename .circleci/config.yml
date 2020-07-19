@@ -19,7 +19,7 @@ jobs:
           key: v1-dependencies-{{ checksum "package.json" }}
 
       - run: 
-          enforce_queuing: false
+          enforce_queuing: true
           command: npm run start
   test:
     docker:

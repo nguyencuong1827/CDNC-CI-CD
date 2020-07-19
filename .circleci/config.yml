@@ -22,18 +22,18 @@ jobs:
 
       - run: CI=false npm run build
       - run: firebase deploy 
-    - run:
-        name: Add Project Firebase
-        command: ./node_modules/.bin/firebase use tutor-reactjs
-    - run:
-        name: Firebase Deploy
-        command: ./node_modules/.bin/firebase deploy --token "$FIREBASE_TOKEN" --only hosting
-    - run:
-        name: Add Project Firebase
-        command: ./node_modules/.bin/firebase use tutor-reactjs
-    - run:
-        name: Firebase Deploy
-        command: ./node_modules/.bin/firebase deploy --token "$FIREBASE_TOKEN" --only hosting    
+      - run:
+          name: Add Project Firebase
+          command: ./node_modules/.bin/firebase use tutor-reactjs
+      - run:
+          name: Firebase Deploy
+          command: ./node_modules/.bin/firebase deploy --token "$FIREBASE_TOKEN" --only hosting
+      - run:
+          name: Add Project Firebase
+          command: ./node_modules/.bin/firebase use tutor-reactjs
+      - run:
+          name: Firebase Deploy
+          command: ./node_modules/.bin/firebase deploy --token "$FIREBASE_TOKEN" --only hosting    
   test:
     docker:
       - image: katalonstudio/katalon:6.3.3

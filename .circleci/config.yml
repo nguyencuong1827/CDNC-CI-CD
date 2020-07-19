@@ -25,7 +25,9 @@ jobs:
     - image: katalonstudio/katalon:6.3.3
     steps:
     - checkout
-    - run: cd test && pwd
+    - run: 
+        command: pwd
+        working_directory: /test
     - run:
         name: Execute Katalon Studio
         command: katalon-execute.sh -browserType="Chrome" -retry=0 -statusDelay=15 -testSuitePath="test/Test Suites/SignUp"

@@ -21,10 +21,12 @@ jobs:
       - run: npm run start
   test:
     docker:
-      - image: circleci/node:lts
+      - image: katalonstudio/katalon:6.3.3
     steps:
       - checkout
-      command: cd "test" && katalon-execute.sh -browserType="Chrome" -retry=0 -statusDelay=15 -testSuitePath="test/Test Suites/SignUp"
+      - run:
+          name: Execute Katalon Studio
+          command: cd "test" && katalon-execute.sh -browserType="Chrome" -retry=0 -statusDelay=15 -testSuitePath="test/Test Suites/SignUp"
 workflows:
   build_and_test:
     jobs:

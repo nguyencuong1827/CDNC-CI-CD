@@ -26,7 +26,7 @@ jobs:
   build:
     docker:
       - image: katalonstudio/katalon:6.3.3
-      - image: circleci/node:lts
+      - image: circleci/node:6.10
     steps:
       - checkout
       # Download and cache dependencies
@@ -35,7 +35,6 @@ jobs:
             - v1-dependencies-{{ checksum "package.json" }}
             # fallback to using the latest cache if no exact match is found
             - v1-dependencies-
-      - run: npm install npm -g
       - run: npm install
 
       - save_cache:
@@ -47,7 +46,7 @@ jobs:
 
       - run:
           name: Execute Katalon Studio
-          command: cd "test" && katalon-execute.sh -browserType="Chrome" -retry=0 -statusDelay=15 -testSuitePath="Test Suites/SignUp"
+          command: cd "test" && katalon-execute.sh -browserType="Chrome" -retry=0 -statusDelay=15 -testSuitePath="test/Test Suites/SignUp"
       - store-test_results:
           path: ./Reports
       - store-artifacts:

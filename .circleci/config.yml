@@ -18,7 +18,8 @@ jobs:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
 
-      - run: npm run start
+      - run: npm run build
+      - run: firebase deploy 
   test:
     docker:
       - image: katalonstudio/katalon:6.3.3

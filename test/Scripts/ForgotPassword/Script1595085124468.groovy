@@ -18,7 +18,7 @@ import org.openqa.selenium.Keys as Keys
 
 WebUI.openBrowser('')
 
-WebUI.navigateToUrl('http://localhost:3000/home')
+WebUI.navigateToUrl('https://tutor-3ef35.web.app/home')
 
 WebUI.click(findTestObject('Page_Uber for tutor/a_Sign in'))
 

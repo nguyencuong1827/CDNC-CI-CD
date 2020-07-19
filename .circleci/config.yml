@@ -1,3 +1,5 @@
+orbs:
+  firebase-deploy: azdevs/firebase-deploy@1.0.0
 version: 2.1
 jobs:
   build:
@@ -5,12 +7,12 @@ jobs:
       - image: circleci/node:lts
     steps:
       - checkout
-    #   # Download and cache dependencies
-    #   - restore_cache:
-    #       keys:
-    #         - v1-dependencies-{{ checksum "package.json" }}
-    #         # fallback to using the latest cache if no exact match is found
-    #         - v1-dependencies-
+      # Download and cache dependencies
+      - restore_cache:
+          keys:
+            - v1-dependencies-{{ checksum "package.json" }}
+            # fallback to using the latest cache if no exact match is found
+            - v1-dependencies-
       - run: npm install
 
       - save_cache:
@@ -18,8 +20,16 @@ jobs:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
 
-      - run: npm run build
+      - run: CI=false npm run build
       - run: firebase deploy 
+  deploy:
+    docker:
+      - image: 'circleci/node:lts'
+    steps:
+      - attach_workspace:
+          at: /tmp/workspace
+      - firebase-deploy/deploy:
+          token: $FIREBASE_DEPLOY_TOKEN
   test:
     docker:
       - image: katalonstudio/katalon:6.3.3
@@ -32,9 +42,12 @@ workflows:
   build_and_test:
     jobs:
       - build
-      - test:
+      - deploy:
           requires:
             - build
+      - test:
+          requires:
+            - deploy
           context: org-global  
 # orbs:
 #   react: thefrontside/react@0.2.0

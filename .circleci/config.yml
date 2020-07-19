@@ -1,5 +1,3 @@
-orbs:
-  firebase-deploy: noyo/firebase-deploy@0.1.1
 version: 2.1
 jobs:
   build:

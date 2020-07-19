@@ -1,31 +1,34 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import { TextField, Typography } from '@material-ui/core';
-import Autocomplete from '@material-ui/lab/Autocomplete';
+// import { makeStyles } from '@material-ui/core/styles';
+import {
+  // TextField,
+  Typography,
+} from '@material-ui/core';
+// import Autocomplete from '@material-ui/lab/Autocomplete';
 
-const jsonPlacesData = require('../../constants/dataPlaces.json');
+// const jsonPlacesData = require('../../constants/dataPlaces.json');
 
-const listProvince = Object.values(jsonPlacesData).map((value) => {
-  return value.name;
-});
-const listDistrict = Object.values(jsonPlacesData).map((value) => {
-  return Object.values(value.districts).map((value) => {
-    return value;
-  });
-});
-const useStyles = makeStyles({});
-const AddressCard = (props) => {
-  const classes = useStyles();
-  const {
-    address,
-    indexProvince,
-    handleDistrictChange,
-    handleProvinceChange,
-    errorPro, 
-    helperTextPro,
-    errorDis,
-    helperTextDis,
-  } = props;
+// const listProvince = Object.values(jsonPlacesData).map((value) => {
+//   return value.name;
+// });
+// const listDistrict = Object.values(jsonPlacesData).map((value) => {
+//   return Object.values(value.districts).map((value) => {
+//     return value;
+//   });
+// });
+// const useStyles = makeStyles({});
+const AddressCard = () => {
+  // const classes = useStyles();
+  // const {
+  //   address,
+  //   indexProvince,
+  //   handleDistrictChange,
+  //   handleProvinceChange,
+  //   errorPro,
+  //   helperTextPro,
+  //   errorDis,
+  //   helperTextDis,
+  // } = props;
 
   return (
     <div>

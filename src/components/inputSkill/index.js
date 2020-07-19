@@ -8,14 +8,14 @@ import { API, ALLSKILL } from '../../config';
 const useStyles = makeStyles({});
 const api = `${API}${ALLSKILL}`;
 
-const schema = {
-  skills: {
-    presence: { allowEmpty: false, message: 'is required' },
-  },
-};
+// const schema = {
+//   skills: {
+//     presence: { allowEmpty: false, message: 'is required' },
+//   },
+// };
 
 const InputSkill = (props) => {
-  const classes = useStyles();
+  // const classes = useStyles();
   const { skills, handleChange, error, helperText, multiple } = props;
   const [listSkill, setListSkill] = useState([]);
   const fetchListSkill = async () => {
@@ -42,7 +42,7 @@ const InputSkill = (props) => {
   };
   useEffect(() => {
     fetchListSkill();
-  }, []);
+  }, [setListSkill]);
   return (
     <div>
       <Typography>Major Skills</Typography>

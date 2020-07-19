@@ -122,7 +122,7 @@ const ShowProfile = (props) => {
 
   useEffect(() => {
     fecthTutorInfo();
-  }, []);
+  }, [setProfile, setReviews, setDefaultReview, setTotalReviewsList]);
   const handleOpen = () => {
     if (user) {
       if (user.isTutor === true) {
@@ -260,7 +260,7 @@ const ShowProfile = (props) => {
             />
             <CardContent>
               <Typography gutterBottom variant="h5" component="h2">
-                {profile.name} 
+                {profile.name}
                 {profile.address ? (
                   <Chip
                     label={profile.address.province}

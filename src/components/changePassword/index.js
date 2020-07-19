@@ -156,14 +156,19 @@ const ChangePassword = (props) => {
       isValid: !errors,
       errors: errors || {},
     }));
-  }, [formState.values]);
+  }, [formState.values, formState.rePassword, hasError]);
 
   return (
     <Container maxWidth="sm" className={classes.widthForm}>
       <div className={classes.paper}>
         {alert.message && (
           <div className="alert-field">
-            <Alert message={alert.message} type={alert.type} showIcon closable/>
+            <Alert
+              message={alert.message}
+              type={alert.type}
+              showIcon
+              closable
+            />
           </div>
         )}
         <Avatar className={classes.avatar}>

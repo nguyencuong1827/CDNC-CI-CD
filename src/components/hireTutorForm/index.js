@@ -1,25 +1,18 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import {
   Grid,
-  Container,
-  Card,
-  CardMedia,
   Typography,
-  CardActions,
-  CardContent,
   Button,
   Chip,
   Divider,
   Dialog,
   DialogTitle,
   DialogContent,
-  DialogContentText,
   DialogActions,
   TextField,
   Avatar,
   Slider,
   FormControl,
-  InputLabel,
   MenuItem,
   Select,
 } from '@material-ui/core';
@@ -94,7 +87,7 @@ const HireFormDialog = (props) => {
       form.totalMoney = hourPerWeek * weekPerMonth * profile.price + bonus * 1;
       form.startDate = selectedDate;
       const res = await axios.post(api, form);
-      const { returncode, returnmessage } = res.data;
+      const { returncode } = res.data;
       if (returncode === 1) {
         setAlert({
           type: 'success',
@@ -138,8 +131,7 @@ const HireFormDialog = (props) => {
             </Grid>
             <Grid item xs={9}>
               <Typography>
-                Email:{' '}
-                <Chip label={profile.email} className={classes.chip} />
+                Email: <Chip label={profile.email} className={classes.chip} />
               </Typography>
               <Typography>
                 Phone Number:{' '}
@@ -148,13 +140,21 @@ const HireFormDialog = (props) => {
               <Typography>
                 Address:{' '}
                 <Typography variant="overline">
-                  {profile.address ? <Chip label={profile.address.district} className={classes.chip} /> : null}
-                  {profile.address ? <Chip label={profile.address.province} className={classes.chip} /> : null}
+                  {profile.address ? (
+                    <Chip
+                      label={profile.address.district}
+                      className={classes.chip}
+                    />
+                  ) : null}
+                  {profile.address ? (
+                    <Chip
+                      label={profile.address.province}
+                      className={classes.chip}
+                    />
+                  ) : null}
                 </Typography>
               </Typography>
-              <Typography>
-                Skills: {displaySkills}
-              </Typography>
+              <Typography>Skills: {displaySkills}</Typography>
             </Grid>
           </Grid>
           <Typography variant="subtitle2">Hourly Price</Typography>

@@ -3,9 +3,7 @@ import axios from 'axios';
 import {
   Grid,
   Container,
-  Paper,
   Card,
-  CardHeader,
   CardContent,
   Typography,
   CardActions,
@@ -96,7 +94,6 @@ const TutorListing = (props) => {
     setDisplayListing(display);
   };
 
-  
   const handleFilterClick = () => {
     let filterTutor = [];
     tutorListing.forEach((element) => {

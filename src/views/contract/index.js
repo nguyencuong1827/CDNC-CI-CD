@@ -15,7 +15,6 @@ import {
   Dialog,
   DialogTitle,
   DialogContent,
-  DialogContentText,
   DialogActions,
   TextField,
   Typography,
@@ -43,7 +42,6 @@ const apiCancelContract = `${API}${CANCELCONTRACT}`;
 const apiDoneContract = `${API}${DONECONTRACT}`;
 const apiReportContract = `${API}${REPORTCONTRACT}`;
 const apiCreatPayment = `${API}${CREATEPAYMENT}`;
-const apiReturnPayment = `${API}${RETURNPAYMENT}`;
 
 const useStyles = makeStyles({
   table: {
@@ -104,7 +102,7 @@ export default function RegistrationRequest() {
 
   useEffect(() => {
     fetchRegistrationListing();
-  }, []);
+  }, [setRegistrationListing, setDisplay, setTotal]);
 
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
@@ -429,9 +427,9 @@ export default function RegistrationRequest() {
                       color="inherit"
                       onClick={() => handelClickCancelButton(row._id)}
                       hidden={
-                        row.status !== 'reported'
-                        && row.status !== 'pending'
-                        && row.status !== 'paying'
+                        row.status !== 'reported' &&
+                        row.status !== 'pending' &&
+                        row.status !== 'paying'
                       }
                     >
                       Cancel

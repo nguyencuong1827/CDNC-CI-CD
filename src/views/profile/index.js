@@ -18,7 +18,7 @@ import { Alert, Upload, message, Progress } from 'antd';
 import { makeStyles } from '@material-ui/core/styles';
 import validate from 'validate.js';
 import axios from 'axios';
-import { PeopleAltOutlined, Edit } from '@material-ui/icons';
+import { PeopleAltOutlined } from '@material-ui/icons';
 import { API, EDIT } from '../../config';
 import { storage } from '../../config/firebase';
 import AddressCard from '../../components/addressCard';
@@ -268,7 +268,7 @@ const Profile = (props) => {
       isValid: !errors,
       errors: errors || {},
     }));
-  }, [formState.values]);
+  }, [formState.values, user.isTutor]);
 
   const hasError = (field) => !!formState.errors[field];
   return (

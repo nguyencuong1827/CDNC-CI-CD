@@ -12,7 +12,6 @@ const api = `${API}${TOPTUTOR}`;
 const Home = (props) => {
   const { ...rest } = props;
   const [tutorListing, setTutorListing] = useState([]);
-  const [profile,setProfile] = useState();
   const fecthTopTutor = async () => {
     try {
       const res = await axios.get(api);

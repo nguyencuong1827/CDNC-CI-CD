@@ -155,7 +155,6 @@ const TutorListing = (props) => {
 
   useEffect(() => {
     fetchTutorListing();
-    setTotal(tutorListing.lenght);
     setOffset(0);
   }, [tutorListing]);
 

@@ -26,7 +26,7 @@ jobs:
   build:
     docker:
       - image: katalonstudio/katalon:6.3.3
-      - image: circleci/node:6.10
+       - image: circleci/node:4.8.2
     steps:
       - checkout
       # Download and cache dependencies

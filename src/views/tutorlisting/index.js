@@ -156,7 +156,7 @@ const TutorListing = (props) => {
   useEffect(() => {
     fetchTutorListing();
     setOffset(0);
-  }, [tutorListing]);
+  }, []);
 
   const classes = useStyles();
 

@@ -22,7 +22,7 @@ jobs:
   test:
     docker:
       - image: circleci/node:lts
-      - run:
+     steps:
           - checkout
           command: cd "test" && katalon-execute.sh -browserType="Chrome" -retry=0 -statusDelay=15 -testSuitePath="test/Test Suites/SignUp"
 workflows:

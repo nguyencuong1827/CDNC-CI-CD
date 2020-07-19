@@ -12,7 +12,6 @@ import {
   Card,
   CardContent,
 } from '@material-ui/core';
-import Autocomplete from '@material-ui/lab/Autocomplete';
 import 'antd/dist/antd.css';
 import './style.css';
 import { Alert, Upload, message, Progress } from 'antd';

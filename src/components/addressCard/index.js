@@ -21,7 +21,7 @@ const AddressCard = (props) => {
     indexProvince,
     handleDistrictChange,
     handleProvinceChange,
-    errorPro,
+    errorPro, 
     helperTextPro,
     errorDis,
     helperTextDis,
@@ -31,10 +31,10 @@ const AddressCard = (props) => {
     <div>
       <Typography>Address</Typography>
       <Typography> --- </Typography>
-      <Autocomplete
+      {/* <Autocomplete
         //       id="combo-box-demo"
         options={listProvince}
-        // getOptionLabel={(option) => option}
+        getOptionLabel={(option) => option}
         // filterSelectedOptions
         onChange={handleProvinceChange}
         value={address.province || ''}
@@ -71,7 +71,7 @@ const AddressCard = (props) => {
             helperText={helperTextDis}
           />
         )}
-      />
+      /> */}
     </div>
   );
 };

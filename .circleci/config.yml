@@ -21,7 +21,7 @@ jobs:
       - run:
           name: Execute Katalon Studio
           command: cd "test" && katalon-execute.sh -browserType="Chrome" -retry=0 -statusDelay=15 -testSuitePath="test/Test Suites/SignUp"
-      - run: npm start
+      - run: npm run start
 
 #   test:
 #     docker:

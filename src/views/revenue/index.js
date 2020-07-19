@@ -104,7 +104,7 @@ const Revenue = () => {
 
   useEffect(() => {
     fetchRevenueList();
-  }, [setRevenueListing, setTotal, setData]);
+  });
 
   return (
     <Card>

@@ -133,7 +133,7 @@ const ResetPassword = (props) => {
       isValid: !errors,
       errors: errors || {},
     }));
-  }, [formState.values, formState.rePassword, hasError]);
+  }, [formState.values, formState.rePassword]);
 
   return (
     <Container maxWidth="sm" className={classes.widthForm}>

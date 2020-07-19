@@ -1,11 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { makeStyles } from '@material-ui/core/styles';
 import { TextField, Typography } from '@material-ui/core';
 import Autocomplete from '@material-ui/lab/Autocomplete';
 import axios from 'axios';
 import { API, ALLSKILL } from '../../config';
 
-const useStyles = makeStyles({});
 const api = `${API}${ALLSKILL}`;
 
 // const schema = {
@@ -42,7 +40,7 @@ const InputSkill = (props) => {
   };
   useEffect(() => {
     fetchListSkill();
-  }, [setListSkill]);
+  });
   return (
     <div>
       <Typography>Major Skills</Typography>

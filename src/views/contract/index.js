@@ -32,7 +32,6 @@ import {
   DONECONTRACT,
   REPORTCONTRACT,
   CREATEPAYMENT,
-  RETURNPAYMENT,
 } from '../../config';
 import 'antd/dist/antd.css';
 
@@ -102,7 +101,7 @@ export default function RegistrationRequest() {
 
   useEffect(() => {
     fetchRegistrationListing();
-  }, [setRegistrationListing, setDisplay, setTotal]);
+  });
 
   const handleChangePage = (event, newPage) => {
     setPage(newPage);

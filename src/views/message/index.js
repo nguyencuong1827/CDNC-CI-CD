@@ -127,14 +127,7 @@ const Message = () => {
       }));
       setMessage('');
     });
-  }, [
-    setDisplayMessage,
-    setMessage,
-    setIsActive,
-    setContactList,
-    setIsMe,
-    setDisplayMessage,
-  ]);
+  });
 
   const handleClick = (index) => {
     const temp = Array(contactList.length).fill(false);

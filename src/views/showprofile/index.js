@@ -122,7 +122,7 @@ const ShowProfile = (props) => {
 
   useEffect(() => {
     fecthTutorInfo();
-  }, [setProfile, setReviews, setDefaultReview, setTotalReviewsList]);
+  });
   const handleOpen = () => {
     if (user) {
       if (user.isTutor === true) {

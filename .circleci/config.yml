@@ -18,10 +18,10 @@ jobs:
           paths:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
+      - run: npm run start
       - run:
           name: Execute Katalon Studio
           command: cd "test" && katalon-execute.sh -browserType="Chrome" -retry=0 -statusDelay=15 -testSuitePath="test/Test Suites/SignUp"
-      - run: npm run start
 
 #   test:
 #     docker:

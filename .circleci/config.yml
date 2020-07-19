@@ -5,12 +5,12 @@ jobs:
       - image: circleci/node:lts
     steps:
       - checkout
-    #   # Download and cache dependencies
-    #   - restore_cache:
-    #       keys:
-    #         - v1-dependencies-{{ checksum "package.json" }}
-    #         # fallback to using the latest cache if no exact match is found
-    #         - v1-dependencies-
+      #   # Download and cache dependencies
+      #   - restore_cache:
+      #       keys:
+      #         - v1-dependencies-{{ checksum "package.json" }}
+      #         # fallback to using the latest cache if no exact match is found
+      #         - v1-dependencies-
       - run: npm install
 
       - save_cache:
@@ -19,7 +19,7 @@ jobs:
           key: v1-dependencies-{{ checksum "package.json" }}
 
       - run: npm run build
-      - run: firebase deploy 
+      - run: firebase deploy
   test:
     docker:
       - image: katalonstudio/katalon:6.3.3
@@ -35,7 +35,7 @@ workflows:
       - test:
           requires:
             - build
-          context: org-global  
+          context: org-global
 # orbs:
 #   react: thefrontside/react@0.2.0
 # version: 2.1

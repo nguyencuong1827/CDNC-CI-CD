@@ -1,5 +1,5 @@
 orbs:
-  firebase-deploy: azdevs/firebase-deploy@1.0.0
+  firebase-deploy: noyo/firebase-deploy@0.1.1
 version: 2.1
 jobs:
   build:
@@ -22,14 +22,18 @@ jobs:
 
       - run: CI=false npm run build
       - run: firebase deploy 
-  deploy:
-    docker:
-      - image: 'circleci/node:lts'
-    steps:
-      - attach_workspace:
-          at: /tmp/workspace
-      - firebase-deploy/deploy:
-          token: $FIREBASE_DEPLOY_TOKEN
+    - run:
+        name: Add Project Firebase
+        command: ./node_modules/.bin/firebase use tutor-reactjs
+    - run:
+        name: Firebase Deploy
+        command: ./node_modules/.bin/firebase deploy --token "$FIREBASE_TOKEN" --only hosting
+    - run:
+        name: Add Project Firebase
+        command: ./node_modules/.bin/firebase use tutor-reactjs
+    - run:
+        name: Firebase Deploy
+        command: ./node_modules/.bin/firebase deploy --token "$FIREBASE_TOKEN" --only hosting    
   test:
     docker:
       - image: katalonstudio/katalon:6.3.3
